@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>docker一键部署dnmp</title>
+      <link href="/2021/07/06/docker%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2dnmp/"/>
+      <url>/2021/07/06/docker%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2dnmp/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>一直想用docker部署一套开发环境，可能是因为太懒的缘故，觉得在Mac上有一堆成熟的套件可用，比如：xampp、mamp等等。就没有动手。近来，自己的Mac更新了最新测试版系统，mamp由于未得到更新，所以一直处以闪崩状态，不得已想到了docker…</p></blockquote><h5 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h5>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> docker-compose </tag>
+            
+            <tag> dnmp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>FlappyBird开发笔记03</title>
       <link href="/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/"/>
       <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/</url>
