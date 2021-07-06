@@ -10,14 +10,1303 @@
   hexoVersion: '5.4.0'
 } </script><meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1.准备工作</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://img0.baidu.com/it/u=2592042537,1864064944&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg"></div><div class="author-info__name text-center">Duke</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">5</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">一群LSP的窝</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://miaoqiang.name/">会所哥</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://jaguarjack.github.io">嘴炮王</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://static.zkqiang.cn/images/20200307203002.jpg-slim)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Dukeのblog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">文章归档</a><a class="site-page" href="/tags">标签云</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">docker一键部署dnmp</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-07-06</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1.准备工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%A2%84%E5%85%88%E5%AE%89%E8%A3%85%EF%BC%9AHomebrew"><span class="toc-number">2.</span> <span class="toc-text">2.预先安装：Homebrew</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%85%B3%E4%BA%8Edocker"><span class="toc-number">3.</span> <span class="toc-text">3.关于docker</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E4%BB%80%E4%B9%88%E6%98%AFdocker%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 什么是docker？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E5%A5%97%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. docker常用的标准化套件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-docker%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. docker安装命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">4.快速使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 本地安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-clone%E9%A1%B9%E7%9B%AE%EF%BC%9A"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. clone项目：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-%E5%A6%82%E6%9E%9C%E4%B8%8D%E6%98%AFroot%E7%94%A8%E6%88%B7%EF%BC%8C%E8%BF%98%E9%9C%80%E5%B0%86%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E5%8A%A0%E5%85%A5docker%E7%94%A8%E6%88%B7%E7%BB%84%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 如果不是root用户，还需将当前用户加入docker用户组：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-4-%E6%8B%B7%E8%B4%9D%E5%B9%B6%E5%91%BD%E5%90%8D%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88Windows%E7%B3%BB%E7%BB%9F%E8%AF%B7%E7%94%A8copy%E5%91%BD%E4%BB%A4%EF%BC%89%EF%BC%8C%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="toc-number">4.4.</span> <span class="toc-text">4.4. 拷贝并命名配置文件（Windows系统请用copy命令），启动：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-PHP%E5%92%8C%E6%89%A9%E5%B1%95"><span class="toc-number">5.</span> <span class="toc-text">5.PHP和扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-%E5%88%87%E6%8D%A2Nginx%E4%BD%BF%E7%94%A8%E7%9A%84PHP%E7%89%88%E6%9C%AC"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 切换Nginx使用的PHP版本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-%E5%AE%89%E8%A3%85PHP%E6%89%A9%E5%B1%95"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 安装PHP扩展</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85php%E6%89%A9%E5%B1%95"><span class="toc-number">5.3.</span> <span class="toc-text">5.3. 快速安装php扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#5-3-1-%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8"><span class="toc-number">5.3.1.</span> <span class="toc-text">5.3.1. 进入容器:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-3-2-%E6%94%AF%E6%8C%81%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E5%88%97%E8%A1%A8"><span class="toc-number">5.3.2.</span> <span class="toc-text">5.3.2. 支持快速安装扩展列表</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-Host%E4%B8%AD%E4%BD%BF%E7%94%A8php%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%88php-cli%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">5.4. Host中使用php命令行（php-cli）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#5-4-1-%E5%8F%82%E8%80%83bash-alias-sample%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B0%86%E5%AF%B9%E5%BA%94-php-cli-%E5%87%BD%E6%95%B0%E6%8B%B7%E8%B4%9D%E5%88%B0%E4%B8%BB%E6%9C%BA%E7%9A%84-bashrc%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-number">5.4.1.</span> <span class="toc-text">5.4.1. 参考bash.alias.sample示例文件，将对应 php cli 函数拷贝到主机的 ~&#x2F;.bashrc文件。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-4-2-%E8%AE%A9%E6%96%87%E4%BB%B6%E8%B5%B7%E6%95%88%EF%BC%9A"><span class="toc-number">5.4.2.</span> <span class="toc-text">5.4.2. 让文件起效：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-4-3-%E7%84%B6%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%9C%A8%E4%B8%BB%E6%9C%BA%E4%B8%AD%E6%89%A7%E8%A1%8Cphp%E5%91%BD%E4%BB%A4%E4%BA%86%EF%BC%9A"><span class="toc-number">5.4.3.</span> <span class="toc-text">5.4.3. 然后就可以在主机中执行php命令了：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-%E4%BD%BF%E7%94%A8composer"><span class="toc-number">5.5.</span> <span class="toc-text">5.5. 使用composer</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#5-5-1-%E7%A1%AE%E5%AE%9Acomposer%E7%BC%93%E5%AD%98%E7%9A%84%E8%B7%AF%E5%BE%84%E3%80%82%E6%AF%94%E5%A6%82%EF%BC%8C%E6%88%91%E7%9A%84dnmp%E4%B8%8B%E8%BD%BD%E5%9C%A8-dnmp%E7%9B%AE%E5%BD%95%EF%BC%8C%E9%82%A3composer%E7%9A%84%E7%BC%93%E5%AD%98%E8%B7%AF%E5%BE%84%E5%B0%B1%E6%98%AF-dnmp-data-composer%E3%80%82"><span class="toc-number">5.5.1.</span> <span class="toc-text">5.5.1. 确定composer缓存的路径。比如，我的dnmp下载在~&#x2F;dnmp目录，那composer的缓存路径就是~&#x2F;dnmp&#x2F;data&#x2F;composer。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-5-2-%E5%8F%82%E8%80%83bash-alias-sample%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B0%86%E5%AF%B9%E5%BA%94-php-composer-%E5%87%BD%E6%95%B0%E6%8B%B7%E8%B4%9D%E5%88%B0%E4%B8%BB%E6%9C%BA%E7%9A%84-bashrc%E6%96%87%E4%BB%B6%E3%80%82"><span class="toc-number">5.5.2.</span> <span class="toc-text">5.5.2. 参考bash.alias.sample示例文件，将对应 php composer 函数拷贝到主机的 ~&#x2F;.bashrc文件。</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-5-3-%E8%AE%A9%E6%96%87%E4%BB%B6%E8%B5%B7%E6%95%88%EF%BC%9A"><span class="toc-number">5.5.3.</span> <span class="toc-text">5.5.3. 让文件起效：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-5-4-%E5%9C%A8%E4%B8%BB%E6%9C%BA%E7%9A%84%E4%BB%BB%E4%BD%95%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%B0%B1%E8%83%BD%E7%94%A8composer%E4%BA%86%EF%BC%9A"><span class="toc-number">5.5.4.</span> <span class="toc-text">5.5.4. 在主机的任何目录下就能用composer了：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-5-5-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8-composer-%E4%BC%9A%E5%9C%A8-dnmp-data-composer-%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AAconfig-json%E6%96%87%E4%BB%B6%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%9C%A8%E8%BF%99%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%9B%BD%E5%86%85%E4%BB%93%E5%BA%93%EF%BC%8C%E4%BE%8B%E5%A6%82%EF%BC%9A"><span class="toc-number">5.5.5.</span> <span class="toc-text">5.5.5. （可选）第一次使用 composer 会在 ~&#x2F;dnmp&#x2F;data&#x2F;composer 目录下生成一个config.json文件，可以在这个文件中指定国内仓库，例如：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">6. 管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8%E5%92%8C%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 服务器启动和构建命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-%E6%B7%BB%E5%8A%A0%E5%BF%AB%E6%8D%B7%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 添加快捷命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-%E6%9F%A5%E7%9C%8Bdocker%E7%BD%91%E7%BB%9C"><span class="toc-number">6.3.</span> <span class="toc-text">6.3. 查看docker网络</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E4%BD%BF%E7%94%A8Log"><span class="toc-number">7.</span> <span class="toc-text">7. 使用Log</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#7-1-Nginx%E6%97%A5%E5%BF%97"><span class="toc-number">7.1.</span> <span class="toc-text">7.1. Nginx日志</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2-PHP-FPM%E6%97%A5%E5%BF%97"><span class="toc-number">7.2.</span> <span class="toc-text">7.2. PHP-FPM日志</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-1-%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%EF%BC%8C%E5%88%9B%E5%BB%BA%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%B9%B6%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-number">7.2.1.</span> <span class="toc-text">7.2.1. 进入容器，创建日志文件并修改权限：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-2-%E4%B8%BB%E6%9C%BA%E4%B8%8A%E6%89%93%E5%BC%80%E5%B9%B6%E4%BF%AE%E6%94%B9PHP-FPM%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6conf-php-fpm-conf%EF%BC%8C%E6%89%BE%E5%88%B0%E5%A6%82%E4%B8%8B%E4%B8%80%E8%A1%8C%EF%BC%8C%E5%88%A0%E9%99%A4%E6%B3%A8%E9%87%8A%EF%BC%8C%E5%B9%B6%E6%94%B9%E5%80%BC%E4%B8%BA%EF%BC%9A"><span class="toc-number">7.2.2.</span> <span class="toc-text">7.2.2. 主机上打开并修改PHP-FPM的配置文件conf&#x2F;php-fpm.conf，找到如下一行，删除注释，并改值为：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-3-%E9%87%8D%E5%90%AFPHP-FPM%E5%AE%B9%E5%99%A8%E3%80%82"><span class="toc-number">7.2.3.</span> <span class="toc-text">7.2.3. 重启PHP-FPM容器。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-3-MySQL%E6%97%A5%E5%BF%97"><span class="toc-number">7.3.</span> <span class="toc-text">7.3. MySQL日志</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">8. 数据库管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-phpMyAdmin"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 phpMyAdmin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-phpRedisAdmin"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 phpRedisAdmin</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E5%9C%A8%E6%AD%A3%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%AD%E5%AE%89%E5%85%A8%E4%BD%BF%E7%94%A8"><span class="toc-number">9.</span> <span class="toc-text">9. 在正式环境中安全使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">10. 常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#10-1-%E5%A6%82%E4%BD%95%E5%9C%A8PHP%E4%BB%A3%E7%A0%81%E4%B8%AD%E4%BD%BF%E7%94%A8curl%EF%BC%9F"><span class="toc-number">10.1.</span> <span class="toc-text">10.1. 如何在PHP代码中使用curl？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-2-Docker%E4%BD%BF%E7%94%A8cron%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">10.2.</span> <span class="toc-text">10.2. Docker使用cron定时任务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3-Docker%E5%AE%B9%E5%99%A8%E6%97%B6%E9%97%B4"><span class="toc-number">10.3.</span> <span class="toc-text">10.3. Docker容器时间</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-4-%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CRedis%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">10.4.</span> <span class="toc-text">10.4. 如何连接MySQL和Redis服务器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-5-%E5%AE%B9%E5%99%A8%E5%86%85%E7%9A%84php%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E5%AE%BF%E4%B8%BB%E6%9C%BAMySQL"><span class="toc-number">10.5.</span> <span class="toc-text">10.5. 容器内的php如何连接宿主机MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#10-5-1-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%89%A7%E8%A1%8Cifconfig-docker0%E5%BE%97%E5%88%B0inet%E5%B0%B1%E6%98%AF%E8%A6%81%E8%BF%9E%E6%8E%A5%E7%9A%84ip%E5%9C%B0%E5%9D%80"><span class="toc-number">10.5.1.</span> <span class="toc-text">10.5.1. 宿主机执行ifconfig docker0得到inet就是要连接的ip地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-5-2-%E8%BF%90%E8%A1%8C%E5%AE%BF%E4%B8%BB%E6%9C%BAMysql%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-number">10.5.2.</span> <span class="toc-text">10.5.2. 运行宿主机Mysql命令行</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-5-3-%E6%8E%A5%E7%9D%80%E7%9B%B4%E6%8E%A5php%E5%AE%B9%E5%99%A8%E4%BD%BF%E7%94%A8172-0-17-1-3306%E8%BF%9E%E6%8E%A5%E5%8D%B3%E5%8F%AF"><span class="toc-number">10.5.3.</span> <span class="toc-text">10.5.3. 接着直接php容器使用172.0.17.1:3306连接即可</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://img0.baidu.com/it/u=2592042537,1864064944&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg"></div><div class="author-info__name text-center">Duke</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">5</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">一群LSP的窝</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://miaoqiang.name/">会所哥</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://jaguarjack.github.io">嘴炮王</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://static.zkqiang.cn/images/20200307203002.jpg-slim)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Dukeのblog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">文章归档</a><a class="site-page" href="/tags">标签云</a><a class="site-page" href="/categories">分类</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">docker一键部署dnmp</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-07-06</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
 <p>一直想用docker部署一套开发环境，可能是因为太懒的缘故，觉得在Mac上有一堆成熟的套件可用，比如：xampp、mamp等等。就没有动手。近来，自己的Mac更新了最新测试版系统，mamp由于未得到更新，所以一直处以闪崩状态，不得已想到了docker…</p>
 </blockquote>
-<h5 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h5><pre><code>1.安装环境：Mac OS
-2.node版本：latest
-3.预先安装：Homebrew
+<h4 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h4><ul>
+<li>1.安装环境：Mac OS</li>
+<li>2.node版本：latest</li>
+<li>3.预先安装：Homebrew</li>
+</ul>
+<h4 id="2-预先安装：Homebrew"><a href="#2-预先安装：Homebrew" class="headerlink" title="2.预先安装：Homebrew"></a>2.预先安装：Homebrew</h4><p>由于众所周知的原因，Homebrew官网的安装命令极易导致：</p>
+<blockquote>
+<p>Failed to connect to raw.githubusercontent.com port 443: Connection refused</p>
+</blockquote>
+<p>下面转载大神写的安装脚本，十分方便。打开terminal，粘贴下属命令即可等待安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">/bin/zsh -c <span class="string">"<span class="subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>"</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="3-关于docker"><a href="#3-关于docker" class="headerlink" title="3.关于docker"></a>3.关于docker</h4><h5 id="3-1-什么是docker？"><a href="#3-1-什么是docker？" class="headerlink" title="3.1. 什么是docker？"></a>3.1. 什么是docker？</h5><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的Linux或Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+<h5 id="3-2-docker常用的标准化套件"><a href="#3-2-docker常用的标准化套件" class="headerlink" title="3.2. docker常用的标准化套件"></a>3.2. docker常用的标准化套件</h5><ul>
+<li>1.Docker Engine</li>
+<li>2.Docker CLI Client</li>
+<li>3.Docker Compose</li>
+<li>4.Docker Machine</li>
+</ul>
+<h5 id="3-3-docker安装命令"><a href="#3-3-docker安装命令" class="headerlink" title="3.3. docker安装命令"></a>3.3. docker安装命令</h5><p>通过第二本我们顺利的安装了homebrew，所以下面通过brew安装docker：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">brew cask install docker</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="4-快速使用"><a href="#4-快速使用" class="headerlink" title="4.快速使用"></a>4.快速使用</h4><h5 id="4-1-本地安装"><a href="#4-1-本地安装" class="headerlink" title="4.1. 本地安装"></a>4.1. 本地安装</h5><pre><code>- `git`
+- `Docker`(系统需为Linux，Windows 10 Build 15063+，或MacOS 10.12+，且必须要`64`位）
+- `docker-compose 1.7.0+`
 </code></pre>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Duke</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.dukemou.com/2021/07/06/docker一键部署dnmp/">http://blog.dukemou.com/2021/07/06/docker一键部署dnmp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.dukemou.com">Dukeのblog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/">docker</a><a class="post-meta__tags" href="/tags/docker-compose/">docker-compose</a><a class="post-meta__tags" href="/tags/dnmp/">dnmp</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/"><span>FlappyBird开发笔记03</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://static.zkqiang.cn/images/20200307203002.jpg-slim)"><div class="layout" id="footer"><div class="copyright">&copy;2021 By Duke</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+<h5 id="4-2-clone项目："><a href="#4-2-clone项目：" class="headerlink" title="4.2. clone项目："></a>4.2. <code>clone</code>项目：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/yeszao/dnmp.git</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="4-3-如果不是root用户，还需将当前用户加入docker用户组："><a href="#4-3-如果不是root用户，还需将当前用户加入docker用户组：" class="headerlink" title="4.3. 如果不是root用户，还需将当前用户加入docker用户组："></a>4.3. 如果不是<code>root</code>用户，还需将当前用户加入<code>docker</code>用户组：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ sudo gpasswd -a <span class="variable">${USER}</span> docker</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="4-4-拷贝并命名配置文件（Windows系统请用copy命令），启动："><a href="#4-4-拷贝并命名配置文件（Windows系统请用copy命令），启动：" class="headerlink" title="4.4. 拷贝并命名配置文件（Windows系统请用copy命令），启动："></a>4.4. 拷贝并命名配置文件（Windows系统请用<code>copy</code>命令），启动：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> dnmp                                           <span class="comment"># 进入项目目录</span></span><br><span class="line">$ cp env.sample .env                                <span class="comment"># 复制环境变量文件</span></span><br><span class="line">$ cp docker-compose.sample.yml docker-compose.yml   <span class="comment"># 复制 docker-compose 配置文件。默认启动3个服务：</span></span><br><span class="line">                                                    <span class="comment"># Nginx、PHP7和MySQL8。要开启更多其他服务，如Redis、</span></span><br><span class="line">                                                    <span class="comment"># PHP5.6、PHP5.4、MongoDB，ElasticSearch等，请删</span></span><br><span class="line">                                                    <span class="comment"># 除服务块前的注释</span></span><br><span class="line">$ docker-compose up                                 <span class="comment"># 启动</span></span><br></pre></td></tr></tbody></table></figure>
+<ol start="5">
+<li>在浏览器中访问：<code>http://localhost</code>或<code>https://localhost</code>(自签名HTTPS演示)就能看到效果，PHP代码在文件<code>./www/localhost/index.php</code>。</li>
+</ol>
+<h4 id="5-PHP和扩展"><a href="#5-PHP和扩展" class="headerlink" title="5.PHP和扩展"></a>5.PHP和扩展</h4><h5 id="5-1-切换Nginx使用的PHP版本"><a href="#5-1-切换Nginx使用的PHP版本" class="headerlink" title="5.1. 切换Nginx使用的PHP版本"></a>5.1. 切换Nginx使用的PHP版本</h5><p>首先，需要启动其他版本的PHP，比如PHP5.4，那就先在<code>docker-compose.yml</code>文件中删除PHP5.4前面的注释，再启动PHP5.4容器。</p>
+<p>PHP5.4启动后，打开Nginx 配置，修改<code>fastcgi_pass</code>的主机地址，由<code>php</code>改为<code>php54</code>，如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">fastcgi_pass   php:9000;</span><br></pre></td></tr></tbody></table></figure>
+<p>为：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">fastcgi_pass   php54:9000;</span><br></pre></td></tr></tbody></table></figure>
+<p>其中 <code>php</code> 和 <code>php54</code> 是<code>docker-compose.yml</code>文件中服务器的名称。</p>
+<p>最后，<strong>重启 Nginx</strong> 生效。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it nginx nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
+<p>这里两个<code>nginx</code>，第一个是容器名，第二个是容器中的<code>nginx</code>程序。</p>
+<h5 id="5-2-安装PHP扩展"><a href="#5-2-安装PHP扩展" class="headerlink" title="5.2. 安装PHP扩展"></a>5.2. 安装PHP扩展</h5><p>PHP的很多功能都是通过扩展实现，而安装扩展是一个略费时间的过程，<br>所以，除PHP内置扩展外，在<code>env.sample</code>文件中我们仅默认安装少量扩展，<br>如果要安装更多扩展，请打开你的<code>.env</code>文件修改如下的PHP配置，<br>增加需要的PHP扩展：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">PHP_EXTENSIONS=pdo_mysql,opcache,redis       <span class="comment"># PHP 要安装的扩展列表，英文逗号隔开</span></span><br><span class="line">PHP54_EXTENSIONS=opcache,redis                 <span class="comment"># PHP 5.4要安装的扩展列表，英文逗号隔开</span></span><br></pre></td></tr></tbody></table></figure>
+<p>然后重新build PHP镜像。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">docker-compose build php</span><br></pre></td></tr></tbody></table></figure>
+<p>可用的扩展请看同文件的<code>env.sample</code>注释块说明。</p>
+<h5 id="5-3-快速安装php扩展"><a href="#5-3-快速安装php扩展" class="headerlink" title="5.3. 快速安装php扩展"></a>5.3. 快速安装php扩展</h5><h6 id="5-3-1-进入容器"><a href="#5-3-1-进入容器" class="headerlink" title="5.3.1. 进入容器:"></a>5.3.1. 进入容器:</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it php /bin/sh</span><br><span class="line"></span><br><span class="line">install-php-extensions apcu </span><br></pre></td></tr></tbody></table></figure>
+<h6 id="5-3-2-支持快速安装扩展列表"><a href="#5-3-2-支持快速安装扩展列表" class="headerlink" title="5.3.2. 支持快速安装扩展列表"></a>5.3.2. 支持快速安装扩展列表</h6><!-- START OF EXTENSIONS TABLE -->
+<!-- ########################################################### -->
+<!-- #                                                         # -->
+<!-- #  DO NOT EDIT THIS TABLE: IT IS GENERATED AUTOMATICALLY  # -->
+<!-- #                                                         # -->
+<!-- #  EDIT THE data/supported-extensions FILE INSTEAD        # -->
+<!-- #                                                         # -->
+<!-- ########################################################### -->
+<table>
+<thead>
+<tr>
+<th align="center">Extension</th>
+<th align="center">PHP 5.5</th>
+<th align="center">PHP 5.6</th>
+<th align="center">PHP 7.0</th>
+<th align="center">PHP 7.1</th>
+<th align="center">PHP 7.2</th>
+<th align="center">PHP 7.3</th>
+<th align="center">PHP 7.4</th>
+<th align="center">PHP 8.0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">amqp</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">apcu</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">apcu_bc</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ast</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">bcmath</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">bz2</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">calendar</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">cmark</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">csv</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">dba</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">decimal</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">ds</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">enchant<a href="#special-requirements-for-enchant">*</a></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">ev</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">excimer</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">exif</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">ffi</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">gd</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">gearman</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">geoip</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">geospatial</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">gettext</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">gmagick</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">gmp</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">gnupg</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">grpc</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">http</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">igbinary</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">imagick</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">imap</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">inotify</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">interbase</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">intl</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">ioncube_loader</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">json_post</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">ldap</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">mailparse</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">maxminddb</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">mcrypt</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">memcache</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">memcached</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">mongo</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mongodb</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">mosquitto</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">msgpack</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">mssql</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mysql</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mysqli</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">oauth</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">oci8</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">odbc</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">opcache</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">opencensus</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">parallel<a href="#special-requirements-for-parallel">*</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">pcntl</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pcov</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_dblib</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_firebird</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_mysql</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_oci</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_odbc</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_pgsql</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pdo_sqlsrv<a href="#special-requirements-for-pdo_sqlsrv">*</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pgsql</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">propro</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">protobuf</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pspell</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">pthreads<a href="#special-requirements-for-pthreads">*</a></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">raphf</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">rdkafka</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">recode</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">redis</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">seaslog</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">shmop</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">smbclient</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">snmp</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">snuffleupagus</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">soap</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">sockets</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">solr</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">sqlsrv<a href="#special-requirements-for-sqlsrv">*</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">ssh2</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">swoole</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">sybase_ct</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sysvmsg</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">sysvsem</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">sysvshm</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">tensor</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">tidy</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">timezonedb</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">uopz</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">uuid</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">vips<a href="#special-requirements-for-vips">*</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">wddx</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">xdebug</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">xhprof</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">xlswriter</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">xmlrpc</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">xsl</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">yaml</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">yar</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">zip</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">zookeeper</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">zstd</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+</tbody></table>
+<p>此扩展来自<a target="_blank" rel="noopener" href="https://github.com/mlocati/docker-php-extension-installer">https://github.com/mlocati/docker-php-extension-installer</a><br>参考示例文件</p>
+<h5 id="5-4-Host中使用php命令行（php-cli）"><a href="#5-4-Host中使用php命令行（php-cli）" class="headerlink" title="5.4. Host中使用php命令行（php-cli）"></a>5.4. Host中使用php命令行（php-cli）</h5><h6 id="5-4-1-参考bash-alias-sample示例文件，将对应-php-cli-函数拷贝到主机的-bashrc文件。"><a href="#5-4-1-参考bash-alias-sample示例文件，将对应-php-cli-函数拷贝到主机的-bashrc文件。" class="headerlink" title="5.4.1. 参考bash.alias.sample示例文件，将对应 php cli 函数拷贝到主机的 ~/.bashrc文件。"></a>5.4.1. 参考<a href="bash.alias.sample">bash.alias.sample</a>示例文件，将对应 php cli 函数拷贝到主机的 <code>~/.bashrc</code>文件。</h6><h6 id="5-4-2-让文件起效："><a href="#5-4-2-让文件起效：" class="headerlink" title="5.4.2. 让文件起效："></a>5.4.2. 让文件起效：</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="5-4-3-然后就可以在主机中执行php命令了："><a href="#5-4-3-然后就可以在主机中执行php命令了：" class="headerlink" title="5.4.3. 然后就可以在主机中执行php命令了："></a>5.4.3. 然后就可以在主机中执行php命令了：</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">~ php -v</span><br><span class="line">PHP 7.2.13 (cli) (built: Dec 21 2018 02:22:47) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">    with Zend OPcache v7.2.13, Copyright (c) 1999-2018, by Zend Technologies</span><br><span class="line">    with Xdebug v2.6.1, Copyright (c) 2002-2018, by Derick Rethans</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="5-5-使用composer"><a href="#5-5-使用composer" class="headerlink" title="5.5. 使用composer"></a>5.5. 使用composer</h5><p><strong>方法1：主机中使用composer命令</strong></p>
+<h6 id="5-5-1-确定composer缓存的路径。比如，我的dnmp下载在-dnmp目录，那composer的缓存路径就是-dnmp-data-composer。"><a href="#5-5-1-确定composer缓存的路径。比如，我的dnmp下载在-dnmp目录，那composer的缓存路径就是-dnmp-data-composer。" class="headerlink" title="5.5.1. 确定composer缓存的路径。比如，我的dnmp下载在~/dnmp目录，那composer的缓存路径就是~/dnmp/data/composer。"></a>5.5.1. 确定composer缓存的路径。比如，我的dnmp下载在<code>~/dnmp</code>目录，那composer的缓存路径就是<code>~/dnmp/data/composer</code>。</h6><h6 id="5-5-2-参考bash-alias-sample示例文件，将对应-php-composer-函数拷贝到主机的-bashrc文件。"><a href="#5-5-2-参考bash-alias-sample示例文件，将对应-php-composer-函数拷贝到主机的-bashrc文件。" class="headerlink" title="5.5.2. 参考bash.alias.sample示例文件，将对应 php composer 函数拷贝到主机的 ~/.bashrc文件。"></a>5.5.2. 参考<a href="bash.alias.sample">bash.alias.sample</a>示例文件，将对应 php composer 函数拷贝到主机的 <code>~/.bashrc</code>文件。</h6><blockquote>
+<p>这里需要注意的是，示例文件中的<code>~/dnmp/data/composer</code>目录需是第一步确定的目录。</p>
+</blockquote>
+<h6 id="5-5-3-让文件起效："><a href="#5-5-3-让文件起效：" class="headerlink" title="5.5.3. 让文件起效："></a>5.5.3. 让文件起效：</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="5-5-4-在主机的任何目录下就能用composer了："><a href="#5-5-4-在主机的任何目录下就能用composer了：" class="headerlink" title="5.5.4. 在主机的任何目录下就能用composer了："></a>5.5.4. 在主机的任何目录下就能用composer了：</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/dnmp/www/</span><br><span class="line">composer create-project yeszao/fastphp project --no-dev</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="5-5-5-（可选）第一次使用-composer-会在-dnmp-data-composer-目录下生成一个config-json文件，可以在这个文件中指定国内仓库，例如："><a href="#5-5-5-（可选）第一次使用-composer-会在-dnmp-data-composer-目录下生成一个config-json文件，可以在这个文件中指定国内仓库，例如：" class="headerlink" title="5.5.5. （可选）第一次使用 composer 会在 ~/dnmp/data/composer 目录下生成一个config.json文件，可以在这个文件中指定国内仓库，例如："></a>5.5.5. （可选）第一次使用 composer 会在 <code>~/dnmp/data/composer</code> 目录下生成一个<strong>config.json</strong>文件，可以在这个文件中指定国内仓库，例如：</h6><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="attr">"config"</span>: {},</span><br><span class="line">    <span class="attr">"repositories"</span>: {</span><br><span class="line">        <span class="attr">"packagist"</span>: {</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"composer"</span>,</span><br><span class="line">            <span class="attr">"url"</span>: <span class="string">"https://packagist.laravel-china.org"</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>方法二：容器内使用composer命令</strong></p>
+<p>还有另外一种方式，就是进入容器，再执行<code>composer</code>命令，以PHP7容器为例：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it php /bin/sh</span><br><span class="line"><span class="built_in">cd</span> /www/localhost</span><br><span class="line">composer update</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="6-管理命令"><a href="#6-管理命令" class="headerlink" title="6. 管理命令"></a>6. 管理命令</h4><h5 id="6-1-服务器启动和构建命令"><a href="#6-1-服务器启动和构建命令" class="headerlink" title="6.1. 服务器启动和构建命令"></a>6.1. 服务器启动和构建命令</h5><p>如需管理服务，请在命令后面加上服务器名称，例如：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ docker-compose up                         <span class="comment"># 创建并且启动所有容器</span></span><br><span class="line">$ docker-compose up -d                      <span class="comment"># 创建并且后台运行方式启动所有容器</span></span><br><span class="line">$ docker-compose up nginx php mysql         <span class="comment"># 创建并且启动nginx、php、mysql的多个容器</span></span><br><span class="line">$ docker-compose up -d nginx php  mysql     <span class="comment"># 创建并且已后台运行的方式启动nginx、php、mysql容器</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ docker-compose start php                  <span class="comment"># 启动服务</span></span><br><span class="line">$ docker-compose stop php                   <span class="comment"># 停止服务</span></span><br><span class="line">$ docker-compose restart php                <span class="comment"># 重启服务</span></span><br><span class="line">$ docker-compose build php                  <span class="comment"># 构建或者重新构建服务</span></span><br><span class="line"></span><br><span class="line">$ docker-compose rm php                     <span class="comment"># 删除并且停止php容器</span></span><br><span class="line">$ docker-compose down                       <span class="comment"># 停止并删除容器，网络，图像和挂载卷</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="6-2-添加快捷命令"><a href="#6-2-添加快捷命令" class="headerlink" title="6.2. 添加快捷命令"></a>6.2. 添加快捷命令</h5><p>在开发的时候，我们可能经常使用<code>docker exec -it</code>进入到容器中，把常用的做成命令别名是个省事的方法。</p>
+<p>首先，在主机中查看可用的容器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ docker ps           <span class="comment"># 查看所有运行中的容器</span></span><br><span class="line">$ docker ps -a        <span class="comment"># 所有容器</span></span><br></pre></td></tr></tbody></table></figure>
+<p>输出的<code>NAMES</code>那一列就是容器的名称，如果使用默认配置，那么名称就是<code>nginx</code>、<code>php</code>、<code>php56</code>、<code>mysql</code>等。</p>
+<p>然后，打开<code>~/.bashrc</code>或者<code>~/.zshrc</code>文件，加上：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> dnginx=<span class="string">'docker exec -it nginx /bin/sh'</span></span><br><span class="line"><span class="built_in">alias</span> dphp=<span class="string">'docker exec -it php /bin/sh'</span></span><br><span class="line"><span class="built_in">alias</span> dphp56=<span class="string">'docker exec -it php56 /bin/sh'</span></span><br><span class="line"><span class="built_in">alias</span> dphp54=<span class="string">'docker exec -it php54 /bin/sh'</span></span><br><span class="line"><span class="built_in">alias</span> dmysql=<span class="string">'docker exec -it mysql /bin/bash'</span></span><br><span class="line"><span class="built_in">alias</span> dredis=<span class="string">'docker exec -it redis /bin/sh'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>下次进入容器就非常快捷了，如进入php容器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ dphp</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="6-3-查看docker网络"><a href="#6-3-查看docker网络" class="headerlink" title="6.3. 查看docker网络"></a>6.3. 查看docker网络</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ifconfig docker0</span><br></pre></td></tr></tbody></table></figure>
+<p>用于填写<code>extra_hosts</code>容器访问宿主机的<code>hosts</code>地址</p>
+<h4 id="7-使用Log"><a href="#7-使用Log" class="headerlink" title="7. 使用Log"></a>7. 使用Log</h4><p>Log文件生成的位置依赖于conf下各log配置的值。</p>
+<h5 id="7-1-Nginx日志"><a href="#7-1-Nginx日志" class="headerlink" title="7.1. Nginx日志"></a>7.1. Nginx日志</h5><p>Nginx日志是我们用得最多的日志，所以我们单独放在根目录<code>log</code>下。</p>
+<p><code>log</code>会目录映射Nginx容器的<code>/var/log/nginx</code>目录，所以在Nginx配置文件中，需要输出log的位置，我们需要配置到<code>/var/log/nginx</code>目录，如：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">error_log  /var/<span class="built_in">log</span>/nginx/nginx.localhost.error.log  warn;</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h5 id="7-2-PHP-FPM日志"><a href="#7-2-PHP-FPM日志" class="headerlink" title="7.2. PHP-FPM日志"></a>7.2. PHP-FPM日志</h5><p>大部分情况下，PHP-FPM的日志都会输出到Nginx的日志中，所以不需要额外配置。</p>
+<p>另外，建议直接在PHP中打开错误日志：</p>
+<figure class="highlight php"><table><tbody><tr><td class="code"><pre><span class="line">error_reporting(E_ALL);</span><br><span class="line">ini_set(<span class="string">'error_reporting'</span>, <span class="string">'on'</span>);</span><br><span class="line">ini_set(<span class="string">'display_errors'</span>, <span class="string">'on'</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果确实需要，可按一下步骤开启（在容器中）。</p>
+<h6 id="7-2-1-进入容器，创建日志文件并修改权限："><a href="#7-2-1-进入容器，创建日志文件并修改权限：" class="headerlink" title="7.2.1. 进入容器，创建日志文件并修改权限："></a>7.2.1. 进入容器，创建日志文件并修改权限：</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it php /bin/sh</span><br><span class="line">$ mkdir /var/<span class="built_in">log</span>/php</span><br><span class="line">$ <span class="built_in">cd</span> /var/<span class="built_in">log</span>/php</span><br><span class="line">$ touch php-fpm.error.log</span><br><span class="line">$ chmod a+w php-fpm.error.log</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="7-2-2-主机上打开并修改PHP-FPM的配置文件conf-php-fpm-conf，找到如下一行，删除注释，并改值为："><a href="#7-2-2-主机上打开并修改PHP-FPM的配置文件conf-php-fpm-conf，找到如下一行，删除注释，并改值为：" class="headerlink" title="7.2.2. 主机上打开并修改PHP-FPM的配置文件conf/php-fpm.conf，找到如下一行，删除注释，并改值为："></a>7.2.2. 主机上打开并修改PHP-FPM的配置文件<code>conf/php-fpm.conf</code>，找到如下一行，删除注释，并改值为：</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">php_admin_value[error_log] = /var/<span class="built_in">log</span>/php/php-fpm.error.log</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="7-2-3-重启PHP-FPM容器。"><a href="#7-2-3-重启PHP-FPM容器。" class="headerlink" title="7.2.3. 重启PHP-FPM容器。"></a>7.2.3. 重启PHP-FPM容器。</h6><h5 id="7-3-MySQL日志"><a href="#7-3-MySQL日志" class="headerlink" title="7.3. MySQL日志"></a>7.3. MySQL日志</h5><p>因为MySQL容器中的MySQL使用的是<code>mysql</code>用户启动，它无法自行在<code>/var/log</code>下的增加日志文件。所以，我们把MySQL的日志放在与data一样的目录，即项目的<code>mysql</code>目录下，对应容器中的<code>/var/lib/mysql/</code>目录。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">slow-query-log-file     = /var/lib/mysql/mysql.slow.log</span><br><span class="line">log-error               = /var/lib/mysql/mysql.error.log</span><br></pre></td></tr></tbody></table></figure>
+<p>以上是mysql.conf中的日志文件的配置。</p>
+<h4 id="8-数据库管理"><a href="#8-数据库管理" class="headerlink" title="8. 数据库管理"></a>8. 数据库管理</h4><p>本项目默认在<code>docker-compose.yml</code>中不开启了用于MySQL在线管理的<em>phpMyAdmin</em>，以及用于redis在线管理的<em>phpRedisAdmin</em>，可以根据需要修改或删除。</p>
+<h5 id="8-1-phpMyAdmin"><a href="#8-1-phpMyAdmin" class="headerlink" title="8.1 phpMyAdmin"></a>8.1 phpMyAdmin</h5><p>phpMyAdmin容器映射到主机的端口地址是：<code>8080</code>，所以主机上访问phpMyAdmin的地址是：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">http://localhost:8080</span><br></pre></td></tr></tbody></table></figure>
+
+<p>MySQL连接信息：</p>
+<ul>
+<li>host：(本项目的MySQL容器网络)</li>
+<li>port：<code>3306</code></li>
+<li>username：（手动在phpmyadmin界面输入）</li>
+<li>password：（手动在phpmyadmin界面输入）</li>
+</ul>
+<h5 id="8-2-phpRedisAdmin"><a href="#8-2-phpRedisAdmin" class="headerlink" title="8.2 phpRedisAdmin"></a>8.2 phpRedisAdmin</h5><p>phpRedisAdmin容器映射到主机的端口地址是：<code>8081</code>，所以主机上访问phpMyAdmin的地址是：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">http://localhost:8081</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Redis连接信息如下：</p>
+<ul>
+<li>host: (本项目的Redis容器网络)</li>
+<li>port: <code>6379</code></li>
+</ul>
+<h4 id="9-在正式环境中安全使用"><a href="#9-在正式环境中安全使用" class="headerlink" title="9. 在正式环境中安全使用"></a>9. 在正式环境中安全使用</h4><p>要在正式环境中使用，请：</p>
+<ol>
+<li>在php.ini中关闭XDebug调试</li>
+<li>增强MySQL数据库访问的安全策略</li>
+<li>增强redis访问的安全策略</li>
+</ol>
+<h4 id="10-常见问题"><a href="#10-常见问题" class="headerlink" title="10. 常见问题"></a>10. 常见问题</h4><h5 id="10-1-如何在PHP代码中使用curl？"><a href="#10-1-如何在PHP代码中使用curl？" class="headerlink" title="10.1. 如何在PHP代码中使用curl？"></a>10.1. 如何在PHP代码中使用curl？</h5><p>参考这个issue：<a target="_blank" rel="noopener" href="https://github.com/yeszao/dnmp/issues/91">https://github.com/yeszao/dnmp/issues/91</a></p>
+<h5 id="10-2-Docker使用cron定时任务"><a href="#10-2-Docker使用cron定时任务" class="headerlink" title="10.2. Docker使用cron定时任务"></a>10.2. Docker使用cron定时任务</h5><p><a target="_blank" rel="noopener" href="https://www.awaimai.com/2615.html">Docker使用cron定时任务</a></p>
+<h5 id="10-3-Docker容器时间"><a href="#10-3-Docker容器时间" class="headerlink" title="10.3. Docker容器时间"></a>10.3. Docker容器时间</h5><p>容器时间在.env文件中配置<code>TZ</code>变量，所有支持的时区请看<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">时区列表·维基百科</a>或者<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/timezones.php">PHP所支持的时区列表·PHP官网</a>。</p>
+<h5 id="10-4-如何连接MySQL和Redis服务器"><a href="#10-4-如何连接MySQL和Redis服务器" class="headerlink" title="10.4. 如何连接MySQL和Redis服务器"></a>10.4. 如何连接MySQL和Redis服务器</h5><p>这要分两种情况，</p>
+<p>第一种情况，在<strong>PHP代码中</strong>。</p>
+<figure class="highlight php"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// 连接MySQL</span></span><br><span class="line"><span class="variable">$dbh</span> = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=mysql;dbname=mysql'</span>, <span class="string">'root'</span>, <span class="string">'123456'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接Redis</span></span><br><span class="line"><span class="variable">$redis</span> = <span class="keyword">new</span> Redis();</span><br><span class="line"><span class="variable">$redis</span>-&gt;connect(<span class="string">'redis'</span>, <span class="number">6379</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>因为容器与容器是<code>expose</code>端口联通的，而且在同一个<code>networks</code>下，所以连接的<code>host</code>参数直接用容器名称，<code>port</code>参数就是容器内部的端口。更多请参考<a target="_blank" rel="noopener" href="https://www.awaimai.com/2138.html">《docker-compose ports和expose的区别》</a>。</p>
+<p>第二种情况，<strong>在主机中</strong>通过<strong>命令行</strong>或者<strong>Navicat</strong>等工具连接。主机要连接mysql和redis的话，要求容器必须经过<code>ports</code>把端口映射到主机了。以 mysql 为例，<code>docker-compose.yml</code>文件中有这样的<code>ports</code>配置：<code>3306:3306</code>，就是主机的3306和容器的3306端口形成了映射，所以我们可以这样连接：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ mysql -h127.0.0.1 -uroot -p123456 -P3306</span><br><span class="line">$ redis-cli -h127.0.0.1</span><br></pre></td></tr></tbody></table></figure>
+<p>这里<code>host</code>参数不能用localhost是因为它默认是通过sock文件与mysql通信，而容器与主机文件系统已经隔离，所以需要通过TCP方式连接，所以需要指定IP。</p>
+<h5 id="10-5-容器内的php如何连接宿主机MySQL"><a href="#10-5-容器内的php如何连接宿主机MySQL" class="headerlink" title="10.5. 容器内的php如何连接宿主机MySQL"></a>10.5. 容器内的php如何连接宿主机MySQL</h5><h6 id="10-5-1-宿主机执行ifconfig-docker0得到inet就是要连接的ip地址"><a href="#10-5-1-宿主机执行ifconfig-docker0得到inet就是要连接的ip地址" class="headerlink" title="10.5.1. 宿主机执行ifconfig docker0得到inet就是要连接的ip地址"></a>10.5.1. 宿主机执行<code>ifconfig docker0</code>得到<code>inet</code>就是要连接的<code>ip</code>地址</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ ifconfig docker0</span><br><span class="line">docker0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255</span><br><span class="line">        ...</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="10-5-2-运行宿主机Mysql命令行"><a href="#10-5-2-运行宿主机Mysql命令行" class="headerlink" title="10.5.2. 运行宿主机Mysql命令行"></a>10.5.2. 运行宿主机Mysql命令行</h6><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"> mysql<span class="operator">&gt;</span><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'123456'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line"> mysql<span class="operator">&gt;</span>flush privileges;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 其中各字符的含义：</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> <span class="operator">*</span>.<span class="operator">*</span> 对任意数据库任意表有效</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> "root" "123456" 是数据库用户名和密码</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> <span class="string">'%'</span> 允许访问数据库的IP地址，<span class="operator">%</span>意思是任意IP，也可以指定IP</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> flush privileges 刷新权限信息</span><br></pre></td></tr></tbody></table></figure>
+
+<h6 id="10-5-3-接着直接php容器使用172-0-17-1-3306连接即可"><a href="#10-5-3-接着直接php容器使用172-0-17-1-3306连接即可" class="headerlink" title="10.5.3. 接着直接php容器使用172.0.17.1:3306连接即可"></a>10.5.3. 接着直接php容器使用<code>172.0.17.1:3306</code>连接即可</h6></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Duke</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.dukemou.com/2021/07/06/docker一键部署dnmp/">http://blog.dukemou.com/2021/07/06/docker一键部署dnmp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.dukemou.com">Dukeのblog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/">docker</a><a class="post-meta__tags" href="/tags/docker-compose/">docker-compose</a><a class="post-meta__tags" href="/tags/dnmp/">dnmp</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/"><span>FlappyBird开发笔记03</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://static.zkqiang.cn/images/20200307203002.jpg-slim)"><div class="layout" id="footer"><div class="copyright">&copy;2021 By Duke</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
