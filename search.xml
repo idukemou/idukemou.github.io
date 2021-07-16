@@ -59,19 +59,6 @@
       </tags>
   </entry>
   <entry>
-    <title>FlappyBird开发笔记03</title>
-    <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/</url>
-    <content><![CDATA[<h4 id="停止定时器原理"><a href="#停止定时器原理" class="headerlink" title="停止定时器原理"></a>停止定时器原理</h4><p><em>每个启动的定时器，都会返回一个number值，是1开始进行递增</em></p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">   timer1 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 1</span></span><br><span class="line">   timer2 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 2</span></span><br><span class="line">   timer3 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 停止定时器</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(number) <span class="comment">//填1 停止 timer1</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">2</span>) <span class="comment">//填2 停止 timer2</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">3</span>) <span class="comment">//填3 停止 timer3</span></span><br></pre></td></tr></tbody></table></figure>
-<span id="more"></span>
-<h4 id="清除所有定时器"><a href="#清除所有定时器" class="headerlink" title="清除所有定时器"></a>清除所有定时器</h4><figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//    首先创建一个新的定时器，记录返回值，其返回值特点，比当前页面中所有定时器总数 + 1</span></span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1</span>)</span><br><span class="line"><span class="comment">//   for循环遍历，将所有的定时器停止</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= length;i++){</span><br><span class="line">        <span class="built_in">clearInterval</span>(i)</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
-]]></content>
-      <tags>
-        <tag>FlappyBird</tag>
-        <tag>web前端</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FlappyBird开发笔记02</title>
     <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B002/</url>
     <content><![CDATA[<h4 id="点击事件监听"><a href="#点击事件监听" class="headerlink" title="点击事件监听"></a>点击事件监听</h4><p><strong>监听的是标签被用户的点击行为</strong></p>
@@ -105,6 +92,19 @@
       </tags>
   </entry>
   <entry>
+    <title>FlappyBird开发笔记03</title>
+    <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/</url>
+    <content><![CDATA[<h4 id="停止定时器原理"><a href="#停止定时器原理" class="headerlink" title="停止定时器原理"></a>停止定时器原理</h4><p><em>每个启动的定时器，都会返回一个number值，是1开始进行递增</em></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">   timer1 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 1</span></span><br><span class="line">   timer2 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 2</span></span><br><span class="line">   timer3 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 停止定时器</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(number) <span class="comment">//填1 停止 timer1</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">2</span>) <span class="comment">//填2 停止 timer2</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">3</span>) <span class="comment">//填3 停止 timer3</span></span><br></pre></td></tr></tbody></table></figure>
+<span id="more"></span>
+<h4 id="清除所有定时器"><a href="#清除所有定时器" class="headerlink" title="清除所有定时器"></a>清除所有定时器</h4><figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//    首先创建一个新的定时器，记录返回值，其返回值特点，比当前页面中所有定时器总数 + 1</span></span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1</span>)</span><br><span class="line"><span class="comment">//   for循环遍历，将所有的定时器停止</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= length;i++){</span><br><span class="line">        <span class="built_in">clearInterval</span>(i)</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+]]></content>
+      <tags>
+        <tag>FlappyBird</tag>
+        <tag>web前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker一键部署dnmp</title>
     <url>/2021/07/07/Docker%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2dnmp/</url>
     <content><![CDATA[<blockquote>
@@ -134,13 +134,12 @@
 <h4 id="4-快速使用"><a href="#4-快速使用" class="headerlink" title="4.快速使用"></a>4.快速使用</h4><h5 id="4-1-本地安装"><a href="#4-1-本地安装" class="headerlink" title="4.1. 本地安装"></a>4.1. 本地安装</h5><ul>
 <li><code>git</code></li>
 <li><code>Docker</code>(系统需为Linux，Windows 10 Build 15063+，或MacOS 10.12+，且必须要<code>64</code>位）</li>
-<li><code>docker-compose 1.7.0+</code><h5 id="4-2-clone项目："><a href="#4-2-clone项目：" class="headerlink" title="4.2. clone项目："></a>4.2. <code>clone</code>项目：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/yeszao/dnmp.git</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="4-3-如果不是root用户，还需将当前用户加入docker用户组："><a href="#4-3-如果不是root用户，还需将当前用户加入docker用户组：" class="headerlink" title="4.3. 如果不是root用户，还需将当前用户加入docker用户组："></a>4.3. 如果不是<code>root</code>用户，还需将当前用户加入<code>docker</code>用户组：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ sudo gpasswd -a <span class="variable">${USER}</span> docker</span><br></pre></td></tr></tbody></table></figure>
-<h5 id="4-4-拷贝并命名配置文件（Windows系统请用copy命令），启动："><a href="#4-4-拷贝并命名配置文件（Windows系统请用copy命令），启动：" class="headerlink" title="4.4. 拷贝并命名配置文件（Windows系统请用copy命令），启动："></a>4.4. 拷贝并命名配置文件（Windows系统请用<code>copy</code>命令），启动：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> dnmp                                           <span class="comment"># 进入项目目录</span></span><br><span class="line">$ cp env.sample .env                                <span class="comment"># 复制环境变量文件</span></span><br><span class="line">$ cp docker-compose.sample.yml docker-compose.yml   <span class="comment"># 复制 docker-compose 配置文件。默认启动3个服务：</span></span><br><span class="line">                                                    <span class="comment"># Nginx、PHP7和MySQL8。要开启更多其他服务，如Redis、</span></span><br><span class="line">                                                    <span class="comment"># PHP5.6、PHP5.4、MongoDB，ElasticSearch等，请删</span></span><br><span class="line">                                                    <span class="comment"># 除服务块前的注释</span></span><br><span class="line">$ docker-compose up                                 <span class="comment"># 启动</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li><code>docker-compose 1.7.0+</code></li>
 </ul>
-<ol start="5">
-<li>在浏览器中访问：<code>http://localhost</code>或<code>https://localhost</code>(自签名HTTPS演示)就能看到效果，PHP代码在文件<code>./www/localhost/index.php</code>。</li>
-</ol>
+<h5 id="4-2-clone项目："><a href="#4-2-clone项目：" class="headerlink" title="4.2. clone项目："></a>4.2. <code>clone</code>项目：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/yeszao/dnmp.git</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="4-3-如果不是root用户，还需将当前用户加入docker用户组："><a href="#4-3-如果不是root用户，还需将当前用户加入docker用户组：" class="headerlink" title="4.3. 如果不是root用户，还需将当前用户加入docker用户组："></a>4.3. 如果不是<code>root</code>用户，还需将当前用户加入<code>docker</code>用户组：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ sudo gpasswd -a <span class="variable">${USER}</span> docker</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="4-4-拷贝并命名配置文件（Windows系统请用copy命令），启动："><a href="#4-4-拷贝并命名配置文件（Windows系统请用copy命令），启动：" class="headerlink" title="4.4. 拷贝并命名配置文件（Windows系统请用copy命令），启动："></a>4.4. 拷贝并命名配置文件（Windows系统请用<code>copy</code>命令），启动：</h5><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> dnmp                                           <span class="comment"># 进入项目目录</span></span><br><span class="line">$ cp env.sample .env                                <span class="comment"># 复制环境变量文件</span></span><br><span class="line">$ cp docker-compose.sample.yml docker-compose.yml   <span class="comment"># 复制 docker-compose 配置文件。默认启动3个服务：</span></span><br><span class="line">                                                    <span class="comment"># Nginx、PHP7和MySQL8。要开启更多其他服务，如Redis、</span></span><br><span class="line">                                                    <span class="comment"># PHP5.6、PHP5.4、MongoDB，ElasticSearch等，请删</span></span><br><span class="line">                                                    <span class="comment"># 除服务块前的注释</span></span><br><span class="line">$ docker-compose up                                 <span class="comment"># 启动</span></span><br></pre></td></tr></tbody></table></figure>
+<h5 id="4-5-在浏览器中访问："><a href="#4-5-在浏览器中访问：" class="headerlink" title="4.5. 在浏览器中访问："></a>4.5. 在浏览器中访问：</h5><p><code>http://localhost</code>或<code>https://localhost</code>(自签名HTTPS演示)就能看到效果，PHP代码在文件<code>./www/localhost/index.php</code>。</p>
 <h4 id="5-PHP和扩展"><a href="#5-PHP和扩展" class="headerlink" title="5.PHP和扩展"></a>5.PHP和扩展</h4><h5 id="5-1-切换Nginx使用的PHP版本"><a href="#5-1-切换Nginx使用的PHP版本" class="headerlink" title="5.1. 切换Nginx使用的PHP版本"></a>5.1. 切换Nginx使用的PHP版本</h5><p>首先，需要启动其他版本的PHP，比如PHP5.4，那就先在<code>docker-compose.yml</code>文件中删除PHP5.4前面的注释，再启动PHP5.4容器。</p>
 <p>PHP5.4启动后，打开Nginx 配置，修改<code>fastcgi_pass</code>的主机地址，由<code>php</code>改为<code>php54</code>，如下：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">fastcgi_pass   php:9000;</span><br></pre></td></tr></tbody></table></figure>
