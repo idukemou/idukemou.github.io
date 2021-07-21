@@ -59,19 +59,6 @@
       </tags>
   </entry>
   <entry>
-    <title>FlappyBird开发笔记03</title>
-    <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/</url>
-    <content><![CDATA[<h4 id="停止定时器原理"><a href="#停止定时器原理" class="headerlink" title="停止定时器原理"></a>停止定时器原理</h4><p><em>每个启动的定时器，都会返回一个number值，是1开始进行递增</em></p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">   timer1 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 1</span></span><br><span class="line">   timer2 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 2</span></span><br><span class="line">   timer3 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 停止定时器</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(number) <span class="comment">//填1 停止 timer1</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">2</span>) <span class="comment">//填2 停止 timer2</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">3</span>) <span class="comment">//填3 停止 timer3</span></span><br></pre></td></tr></tbody></table></figure>
-<span id="more"></span>
-<h4 id="清除所有定时器"><a href="#清除所有定时器" class="headerlink" title="清除所有定时器"></a>清除所有定时器</h4><figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//    首先创建一个新的定时器，记录返回值，其返回值特点，比当前页面中所有定时器总数 + 1</span></span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1</span>)</span><br><span class="line"><span class="comment">//   for循环遍历，将所有的定时器停止</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= length;i++){</span><br><span class="line">        <span class="built_in">clearInterval</span>(i)</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
-]]></content>
-      <tags>
-        <tag>FlappyBird</tag>
-        <tag>web前端</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FlappyBird开发笔记02</title>
     <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B002/</url>
     <content><![CDATA[<h4 id="点击事件监听"><a href="#点击事件监听" class="headerlink" title="点击事件监听"></a>点击事件监听</h4><p><strong>监听的是标签被用户的点击行为</strong></p>
@@ -102,6 +89,19 @@
 ]]></content>
       <tags>
         <tag>FlappyBird</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FlappyBird开发笔记03</title>
+    <url>/2021/07/06/FlappyBird%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B003/</url>
+    <content><![CDATA[<h4 id="停止定时器原理"><a href="#停止定时器原理" class="headerlink" title="停止定时器原理"></a>停止定时器原理</h4><p><em>每个启动的定时器，都会返回一个number值，是1开始进行递增</em></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">   timer1 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 1</span></span><br><span class="line">   timer2 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 2</span></span><br><span class="line">   timer3 = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1000</span>) <span class="comment">//timer = 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 停止定时器</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(number) <span class="comment">//填1 停止 timer1</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">2</span>) <span class="comment">//填2 停止 timer2</span></span><br><span class="line">   <span class="built_in">clearInterval</span>(<span class="number">3</span>) <span class="comment">//填3 停止 timer3</span></span><br></pre></td></tr></tbody></table></figure>
+<span id="more"></span>
+<h4 id="清除所有定时器"><a href="#清除所有定时器" class="headerlink" title="清除所有定时器"></a>清除所有定时器</h4><figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//    首先创建一个新的定时器，记录返回值，其返回值特点，比当前页面中所有定时器总数 + 1</span></span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{},<span class="number">1</span>)</span><br><span class="line"><span class="comment">//   for循环遍历，将所有的定时器停止</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= length;i++){</span><br><span class="line">        <span class="built_in">clearInterval</span>(i)</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+]]></content>
+      <tags>
+        <tag>FlappyBird</tag>
+        <tag>web前端</tag>
       </tags>
   </entry>
   <entry>
